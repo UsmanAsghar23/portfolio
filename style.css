@@ -86,3 +86,130 @@ h2 {
   border: 2px solid white;
   color: white;
 }
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 2rem;
+}
+
+.experience {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 2rem;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 2rem;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 2rem;
+}
+
+#changing-title {
+  border-right: 2px solid #00f7ff;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  min-height: 1.2em;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+.hero-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 4rem 5%;
+  flex-wrap: wrap;
+  max-width: 1400px;
+  margin: auto;
+}
+
+/* Left: Profile Picture */
+.hero-left .profile-pic {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #00f7ff;
+  box-shadow: 0 0 10px rgba(0, 247, 255, 0.4);
+}
+
+/* Center: Main Text */
+.hero-center {
+  text-align: center;
+  flex: 1;
+  min-width: 300px;
+}
+
+.hero-buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Right: Contact Icons Grid */
+.hero-right {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  justify-items: center;
+  align-items: center;
+}
+
+.icon-box {
+  text-align: center;
+}
+
+.icon-box img {
+  background-color: #1e1e1e;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  padding: 15px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.icon-box img:hover {
+  transform: scale(1.1);
+}
+
+.icon-box p {
+  margin-top: 0.5rem;
+  color: #00f7ff;
+  font-weight: bold;
+  font-size: 0.85rem;
+}

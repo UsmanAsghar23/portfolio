@@ -19,16 +19,53 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
-  <!-- Hero Section -->
-  <section id="home" class="hero">
+<!-- Hero Section -->
+<section id="home" class="hero-layout">
+  <!-- LEFT: Profile Image -->
+  <div class="hero-left">
+    <img src="images/profile.jpeg" alt="Profile Image" class="profile-pic">
+  </div>
+
+  <!-- CENTER: Hero Text + Buttons -->
+  <div class="hero-center">
     <h2 class="greeting">HELLO!</h2>
     <h1>I'm <span class="highlight">Usman Asghar</span></h1>
-    <h2>Full-Stack Developer</h2>
+    <h2><span id="changing-title">Full-Stack Developer</span></h2>
     <div class="hero-buttons">
       <a href="resume.pdf" class="btn btn-primary" target="_blank">RESUME</a>
       <a href="#contact" class="btn btn-secondary">CONTACT ME</a>
     </div>
-  </section>
+  </div>
+
+  <!-- RIGHT: Contact Icons -->
+  <div class="hero-right">
+    <div class="icon-box">
+      <a href="https://www.linkedin.com/in/usman-asghar-440587282/" target="_blank">
+        <img src="images/linkedin.png" alt="LinkedIn" />
+        <p>LINKEDIN</p>
+      </a>
+    </div>
+    <div class="icon-box">
+      <a href="https://github.com/UsmanAsghar23" target="_blank">
+        <img src="images/github.png" alt="GitHub" />
+        <p>GITHUB</p>
+      </a>
+    </div>
+    <div class="icon-box">
+      <a href="mailto:usmanasghar2121.com">
+        <img src="images/mail.png" alt="Email" />
+        <p>EMAIL</p>
+      </a>
+    </div>
+    <div class="icon-box">
+      <a href="https://www.instagram.com/usmanasghar23/" target="_blank">
+        <img src="images/instagram.png" alt="Instagram" />
+        <p>Instagram</p>
+      </a>
+    </div>
+  </div>
+</section>
+
   <!-- About Section -->
   <section id="about" class="about">
     <h2>About Me</h2>
@@ -36,6 +73,8 @@
       I am a Masters Student Studying Computer Science at the University of Illinois at Urbana-Champagin.
       I have a passion for building web applications and learning new technologies. 
       My goal is to create efficient and user-friendly software solutions.
+    </p>
+  </section>
   <!-- Experiance Section -->
   <section id="experience" class="experience">
     <h2>Experience</h2>
@@ -81,6 +120,7 @@
       <textarea name="message" placeholder="Your Message" required></textarea>
       <button type="submit" class="btn btn-primary">Send Message</button>
     </form>
+  </section>
   <script src="script.js"></script>
 </body>
 </html>
