@@ -2,60 +2,85 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Usman Asghar | Portfolio</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>Usman Asghar</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Write a short bio here...</p>
-  </section>
-
-  <section id="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>HTML</li>
-      <li>CSS</li>
-      <li>JavaScript</li>
-      <!-- Add more -->
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">Usman Asghar</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project-card">
-      <h3>Project 1</h3>
-      <img src="assets/project1.png" alt="Project Screenshot">
-      <p>Description of your project</p>
-      <a href="#">View Project</a>
+  </nav>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <h2 class="greeting">HELLO!</h2>
+    <h1>I'm <span class="highlight">Usman Asghar</span></h1>
+    <h2>Full-Stack Developer</h2>
+    <div class="hero-buttons">
+      <a href="resume.pdf" class="btn btn-primary" target="_blank">RESUME</a>
+      <a href="#contact" class="btn btn-secondary">CONTACT ME</a>
     </div>
   </section>
-
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea placeholder="Your Message"></textarea>
-      <button type="submit">Send</button>
-    </form>
+  <!-- About Section -->
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <p>
+      I am a Masters Student Studying Computer Science at the University of Illinois at Urbana-Champagin.
+      I have a passion for building web applications and learning new technologies. 
+      My goal is to create efficient and user-friendly software solutions.
+  <!-- Experiance Section -->
+  <section id="experience" class="experience">
+    <h2>Experience</h2>
+    <p>Technical Analyst</p>
   </section>
-
-  <footer>
-    <p>© 2025 Usman Asghar</p>
-  </footer>
-
+  <!-- Skills Section -->
+  <section id="skills" class="skills">
+    <h2>Skills</h2>
+    <ul class="skill-list">
+      <li>Python</li>
+      <li>C/C++</li>
+      <li>JavaScript</li>
+      <li>SQL</li>
+      <li>AWS</li>
+      <li>HTML/CSS</li>
+      <li>MongoDB</li>
+    </ul>
+  </section>
+  <!-- Projects Section -->
+  <section id="projects" class="projects">
+    <h2>Projects</h2>
+    <div class="project-list">
+      <div class="project-item">
+        <h3>Project 1</h3>
+        <p>Description of Project 1.</p>
+      </div>
+      <div class="project-item">
+        <h3>Project 2</h3>
+        <p>Description of Project 2.</p>
+      </div>
+      <div class="project-item">
+        <h3>Project 3</h3>
+        <p>Description of Project 3.</p>
+      </div>
+    </div> 
+  </section>
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <form action="#" method="post">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
   <script src="script.js"></script>
 </body>
 </html>
