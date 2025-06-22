@@ -1,3 +1,4 @@
+//script.js
 document.querySelector('form').addEventListener('submit', function (e) {
   e.preventDefault();
   alert("Thank you for your message!");
@@ -5,7 +6,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
 
 const titles = [
   "MCS Student at UIUC", 
-  "Software Engineer",
+  "Aspring Software Engineer",
   "AI/ML Enthusiast",
 ];
 
@@ -45,3 +46,28 @@ function typeEffect() {
 
 // Start the effect
 typeEffect();
+
+const greetings = [
+  "Hola!",
+  "Bonjour!",
+  "Ciao!",
+  "Hello!",
+];
+
+let greetIndex = 0;
+const greetingText = document.getElementById("greeting-text");
+
+function rotateGreeting() {
+  greetingText.classList.remove("fade-in");
+  greetingText.classList.add("fade-out");
+
+  setTimeout(() => {
+    greetingText.textContent = greetings[greetIndex];
+    greetingText.classList.remove("fade-out");
+    greetingText.classList.add("fade-in");
+
+    greetIndex = (greetIndex + 1) % greetings.length;
+  }, 500);
+}
+
+setInterval(rotateGreeting, 2500); 
