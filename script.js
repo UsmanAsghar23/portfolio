@@ -1,12 +1,36 @@
 //script.js
-document.querySelector('form').addEventListener('submit', function (e) {
+function showPopup() {
+  document.getElementById("custom-popup").style.display = "flex";
+}
+
+function closePopup() {
+  document.getElementById("custom-popup").style.display = "none";
+}
+
+document.querySelector("form").addEventListener("submit", function (e) {
   e.preventDefault();
-  alert("Thank you for your message!");
+
+  const form = this;
+
+  fetch(form.action, {
+    method: "POST",
+    body: new FormData(form),
+    headers: {
+      Accept: "application/json"
+    }
+  }).then(response => {
+    if (response.ok) {
+      showPopup();
+      form.reset();
+    } else {
+      alert("Error submitting form. Please try again later.");
+    }
+  });
 });
 
 const titles = [
   "MCS Student at UIUC", 
-  "Aspring Software Engineer",
+  "Aspring Data Scientist",
   "AI/ML Enthusiast",
 ];
 
