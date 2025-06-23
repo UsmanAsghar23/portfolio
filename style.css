@@ -139,7 +139,6 @@ html {
   100% { opacity: 0; transform: translateY(-10px); }
 }
 
-
 h1 {
   font-size: 3rem;
   font-weight: 800;
@@ -191,7 +190,6 @@ h2 {
   color: white;
 }
 
-/* Right: Contact Icons */
 .hero-right {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -227,43 +225,64 @@ h2 {
 
 
 /* ============================
-   Section Styling
+   About Section
 ============================ */
-.about,
-.experience,
-.projects,
-.contact {
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 1000px;
+  margin: 8rem auto;
+  padding: 2rem;
+}
+
+.about h2 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.about p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #ffffff;
+}
+
+/* ============================
+   Experience Section
+============================ */
+.experience {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   max-width: 900px;
-  margin: 6rem auto;
+  margin: 2rem auto;
   padding: 2rem;
 }
 
-.about h2,
-.experience h2,
-.projects h2,
-.contact h2 {
+.experience h2 {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
   color: #ffffff;
+  position: center;
 }
 
-.about p,
-.experience p,
-.projects p,
-.contact p {
+.experience p {
   font-size: 1.1rem;
   line-height: 1.8;
   color: #ccc;
   padding: 0 1.5rem;
 }
 
-/* ============================
-  Experience Section 
-============================ */
+#experience h1 {
+  font-size: 3rem;
+  color: #ffffff;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 3rem;
+}
 
 #experience {
   padding: 4rem 2rem;
@@ -320,6 +339,34 @@ h2 {
   color: #00f7ff;
 }
 
+
+/* ============================
+   Projects Section
+============================ */
+.projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 900px;
+  margin: 6rem auto;
+  padding: 2rem;
+}
+
+.projects h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.projects p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #ccc;
+  padding: 0 1.5rem;
+}
+
+
 /* ============================
    Skills Section
 ============================ */
@@ -333,3 +380,40 @@ h2 {
   margin: 4rem auto;
   padding: 2rem;
 }
+
+.skills-section {
+  background-color: #111;
+  padding: 4rem 2rem;
+  color: #fff;
+  text-align: center;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.skill-category h3 {
+  font-size: 1.5rem;
+  color: #00f0ff;
+  margin-bottom: 1rem;
+}
+
+.skill-category ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.skill-category ul li {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
