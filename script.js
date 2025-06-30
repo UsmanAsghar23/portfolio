@@ -31,7 +31,7 @@ document.querySelector("form").addEventListener("submit", function (e) {
 const titles = [
   "MCS Student at UIUC", 
   "Aspring Data Scientist",
-  "AI/ML Enthusiast",
+  "AI Enthusiast",
 ];
 
 
