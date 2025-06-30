@@ -354,7 +354,7 @@ h2 {
    Skills Section
 ============================ */
 #skills {
-  scroll-margin-top: 80px; /* Adjust depending on your navbar height */
+  scroll-margin-top: 80px; 
 }
 
 .skills {
