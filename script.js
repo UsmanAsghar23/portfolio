@@ -1,4 +1,51 @@
 //script.js
+const menuIcon = document.getElementById("menu-icon");
+const navLinks = document.getElementById("nav-links");
+
+menuIcon.addEventListener("click", () => {
+  navLinks.classList.toggle("show");
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    const targetId = this.getAttribute('href').substring(1); // remove #
+    const targetElement = document.getElementById(targetId);
+
+    // Custom offset per section
+    let offset = 0;
+    switch (targetId) {
+      case "home":
+        offset = -50;
+        break;
+      case "about":
+        offset = -70;
+        break;
+      case "experience":
+        offset = -5;
+        break;
+      case "skills":
+        offset = -130;
+        break;
+      default:
+        offset = -60;
+    }
+
+    const y = targetElement.getBoundingClientRect().top + window.pageYOffset + offset;
+
+    window.scrollTo({
+      top: y,
+      behavior: 'smooth'
+    });
+
+    // Optional: close mobile nav
+    navLinks.classList.remove("show");
+  });
+});
+
+
+
 function showPopup() {
   document.getElementById("custom-popup").style.display = "flex";
 }

@@ -33,6 +33,7 @@ html {
   left: 0;
   width: 95%;
   z-index: 1000;
+  padding-top: 2.5rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   font-size: large;
 }
@@ -44,9 +45,10 @@ html {
 }
 
 .nav-links {
-  list-style: none;
   display: flex;
   gap: 2rem;
+  list-style: none;
+  margin: 0;
   position: relative;
 }
 
@@ -66,23 +68,51 @@ html {
   height: 2px;
   background-color: #00ff00;
   width: 0;
-  bottom: -4px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  transition: width 0.4s ease;
+  transition: width 0.3s ease;
 }
 
 .nav-links li a:hover::after {
   width: 100%;
 }
-
 
 .nav-links li a:hover {
-  color: #00f7ff; 
+  color: #00f7ff;
 }
 
-.nav-links li a:hover::after {
-  width: 100%;
+.menu-icon,
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: black;
+    position: absolute;
+    top: 70px;
+    right: 0;     
+    width: 140px;      
+    padding: 1rem;
+    border-radius: 8px 0 0 8px; 
+    z-index: 999;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .menu-icon,
+  .hamburger {
+    display: block;
+    padding-right: 25px;
+  }
 }
 
 /* ============================
@@ -92,16 +122,17 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
   flex-wrap: wrap;
+  gap: 2rem;
   max-width: 1400px;
   margin: auto;
-  padding: 10rem 5% 4rem; 
+  padding: 10rem 5% 4rem;
   padding-bottom: 10rem;
 }
 
+/* Profile Image */
 .hero-left .profile-pic {
-  width: 260px;          
+  width: 260px;
   height: 260px;
   border-radius: 50%;
   object-fit: cover;
@@ -109,7 +140,7 @@ html {
   box-shadow: 0 0 10px rgba(0, 247, 255, 0.4);
 }
 
-/* Center: Text & Buttons */
+/* Center Section */
 .hero-center {
   text-align: center;
   flex: 1;
@@ -121,22 +152,15 @@ html {
   font-size: 1.5rem;
 }
 
+/* Greeting animation */
 .fade-in {
-  animation: fadeIn 0.6s ease-in forwards;
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
 }
 
 .fade-out {
-  animation: fadeOut 0.5s ease-out forwards;
-}
-
-@keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeOut {
-  0% { opacity: 1; transform: translateY(0); }
-  100% { opacity: 0; transform: translateY(-10px); }
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
 }
 
 h1 {
@@ -169,6 +193,7 @@ h2 {
   display: flex;
   gap: 1rem;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .btn {
@@ -205,9 +230,9 @@ h2 {
 .icon-box img {
   background-color: #1e1e1e;
   border-radius: 50%;
-  width: 90px;         
+  width: 90px;
   height: 90px;
-  padding: 20px;         
+  padding: 20px;
   object-fit: contain;
   transition: transform 0.2s ease;
 }
@@ -220,9 +245,38 @@ h2 {
   margin-top: 0.5rem;
   color: #00f7ff;
   font-weight: bold;
-  font-size: 1rem;      
+  font-size: 1rem;
 }
 
+/* ============================
+   Hero Responsive Layout
+============================ */
+@media (max-width: 768px) {
+  .hero-layout {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 6rem 5% 3rem;
+  }
+  .hero-left, .hero-center, .hero-right {
+    width: 100%;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 200px;
+  }
+
+  .hero-right {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+}
 
 /* ============================
    About Section
@@ -545,6 +599,7 @@ h2 {
   padding: 12px;
   border: none;
   border-radius: 50px;
+  width: 104%;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
