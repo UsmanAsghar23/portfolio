@@ -1,12 +1,47 @@
 /* ============================
+   CSS Variables for Themes
+============================ */
+:root {
+  /* Dark theme (default) */
+  --bg-primary: #000;
+  --bg-secondary: #1a1a1a;
+  --text-primary: #fff;
+  --text-secondary: #ccc;
+  --accent-color: #00f7ff;
+  --accent-hover: #aefcff;
+  --navbar-accent: #00ff00;
+  --border-color: #333;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --card-bg: #1a1a1a;
+  --icon-bg: #1e1e1e;
+}
+
+[data-theme="light"] {
+  /* Light theme */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #333;
+  --text-secondary: #666;
+  --accent-color: #0033a0;
+  --accent-hover: #002266;
+  --navbar-accent: #ff8c00;
+  --border-color: #e0e0e0;
+  --shadow-color: rgba(0, 0, 0, 0.07);
+  --card-bg: #fff;
+  --card-border: #e0e0e0;
+  --icon-bg: #f8f9fa;
+}
+
+/* ============================
    Global Styles
 ============================ */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #000;
-  color: #fff;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -20,6 +55,88 @@ html {
 }
 
 /* ============================
+   Theme Toggle Button
+============================ */
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.theme-toggle-fixed {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--accent-color);
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle-fixed:hover {
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.theme-icon {
+  font-size: 1.3rem;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle-fixed:hover .theme-icon {
+  transform: rotate(15deg);
+}
+
+/* Mobile responsive for fixed theme toggle */
+@media (max-width: 768px) {
+  .theme-toggle-fixed {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    padding: 10px;
+  }
+  
+  .theme-icon {
+    font-size: 1.1rem;
+  }
+}
+
+/* ============================
+   Scroll Animations
+============================ */
+[data-aos] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-aos="fade-up"] {
+  transform: translateY(30px);
+}
+
+[data-aos="fade-up"].aos-animate {
+  transform: translateY(0);
+}
+
+/* ============================
    Navbar
 ============================ */
 .navbar {
@@ -27,21 +144,23 @@ html {
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 2rem;
-  background-color: #000;
+  background-color: var(--bg-primary);
   position: fixed;
   top: 0;
   left: 0;
   width: 95%;
   z-index: 1000;
   padding-top: 2.5rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 10px var(--shadow-color);
   font-size: large;
+  transition: background-color 0.3s ease;
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: white;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .nav-links {
@@ -55,7 +174,7 @@ html {
 .nav-links li a {
   position: relative;
   text-decoration: none;
-  color: white;
+  color: var(--text-primary);
   font-weight: 500;
   font-size: 1.15rem; 
   padding: 5px 0;
@@ -66,7 +185,7 @@ html {
   content: '';
   position: absolute;
   height: 2px;
-  background-color: #00ff00;
+  background-color: var(--navbar-accent);
   width: 0;
   bottom: 0;
   left: 50%;
@@ -79,22 +198,23 @@ html {
 }
 
 .nav-links li a:hover {
-  color: #00f7ff;
+  color: var(--accent-color);
 }
 
 .menu-icon,
 .hamburger {
   display: none;
   font-size: 2rem;
-  color: white;
+  color: var(--text-primary);
   cursor: pointer;
+  transition: color 0.3s ease;
 }
 
 @media (max-width: 768px) {
   .nav-links {
     display: none;
     flex-direction: column;
-    background-color: black;
+    background-color: var(--bg-primary);
     position: absolute;
     top: 70px;
     right: 0;     
@@ -102,6 +222,7 @@ html {
     padding: 1rem;
     border-radius: 8px 0 0 8px; 
     z-index: 999;
+    transition: background-color 0.3s ease;
   }
 
   .nav-links.show {
@@ -136,8 +257,9 @@ html {
   height: 260px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #00f7ff;
+  border: 3px solid var(--accent-color);
   box-shadow: 0 0 10px rgba(0, 247, 255, 0.4);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Center Section */
@@ -150,6 +272,8 @@ html {
 .greeting {
   letter-spacing: 2px;
   font-size: 1.5rem;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 /* Greeting animation */
@@ -166,26 +290,32 @@ html {
 h1 {
   font-size: 3rem;
   font-weight: 800;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .highlight {
-  color: #00f7ff;
+  color: var(--accent-color);
+  transition: color 0.3s ease;
 }
 
 h2 {
   font-weight: 600;
   font-size: 1.5rem;
   margin-top: 1rem;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 #changing-title {
-  border-right: 2px solid #00f7ff;
+  border-right: 2px solid var(--accent-color);
   white-space: nowrap;
   overflow: hidden;
   display: inline-block;
   min-height: 1.2em;
   font-weight: bold;
   font-size: 1.4rem;
+  transition: border-color 0.3s ease;
 }
 
 .hero-buttons {
@@ -201,18 +331,28 @@ h2 {
   border-radius: 25px;
   font-weight: 600;
   letter-spacing: 1px;
+  transition: all 0.3s ease;
 }
 
 .btn-primary {
-  background-color: #00f7ff;
-  color: black;
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
   border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
 }
 
 .btn-secondary {
   background-color: transparent;
-  border: 2px solid white;
-  color: white;
+  border: 2px solid var(--text-primary);
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
 }
 
 .hero-right {
@@ -228,13 +368,13 @@ h2 {
 }
 
 .icon-box img {
-  background-color: #1e1e1e;
+  background-color: var(--icon-bg);
   border-radius: 50%;
   width: 90px;
   height: 90px;
   padding: 20px;
   object-fit: contain;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
 .icon-box img:hover {
@@ -243,9 +383,10 @@ h2 {
 
 .icon-box p {
   margin-top: 0.5rem;
-  color: #00f7ff;
+  color: var(--accent-color);
   font-weight: bold;
   font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
 /* ============================
@@ -289,18 +430,28 @@ h2 {
   max-width: 1000px;
   margin: 8rem auto;
   padding: 2rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 0 20px var(--shadow-color);
+  border: 1px solid transparent;
+}
+[data-theme="light"] .about {
+  border: 1.5px solid var(--card-border);
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.07);
 }
 
 .about h2 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  color: #ffffff;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .about p {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #ffffff;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 /* ============================
@@ -319,38 +470,47 @@ h2 {
 .experience h2 {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
-  color: #ffffff;
+  color: var(--text-primary);
   position: center;
+  transition: color 0.3s ease;
 }
 
 .experience p {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #ccc;
+  color: var(--text-secondary);
   padding: 0 1.5rem;
+  transition: color 0.3s ease;
 }
 
 #experience h1 {
   font-size: 3rem;
-  color: #ffffff;
+  color: var(--text-primary);
   flex-direction: column;
   text-align: center;
   margin-bottom: 3rem;
+  transition: color 0.3s ease;
 }
 
 #experience {
   padding: 4rem 2rem;
-  background-color: #000;
-  color: white;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .experience-card {
-  background-color: #1a1a1a;
+  background-color: var(--card-bg);
   border-radius: 12px;
   padding: 2rem;
   margin-bottom: 2rem;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.05);
-  transition: transform 0.3s ease;
+  box-shadow: 0 0 20px var(--shadow-color);
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s, border 0.3s;
+  border: 1px solid transparent;
+}
+[data-theme="light"] .experience-card {
+  border: 1.5px solid var(--card-border);
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.07);
 }
 
 .experience-card:hover {
@@ -358,12 +518,13 @@ h2 {
 }
 
 .experience-duration {
-  color: #00f7ff;
+  color: var(--accent-color);
   margin-bottom: 0.5rem;
   font-size: 1.5rem;
   font-weight: bold;
   margin: 0;
   text-align: right;
+  transition: color 0.3s ease;
 }
 
 .experience-header {
@@ -378,14 +539,16 @@ h2 {
   font-size: 1.8rem;
   font-weight: 600;
   margin: 0;
-  color: #fff;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .experience-company {
   font-size: 1rem;
   font-weight: 400;
-  color: #ccc;
+  color: var(--text-secondary);
   margin-bottom: 1.5rem;
+  transition: color 0.3s ease;
 }
 
 .experience-details {
@@ -397,11 +560,14 @@ h2 {
   margin-bottom: 1rem;
   line-height: 1.6;
   font-size: 1.05rem;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .highlight {
   font-weight: bold;
-  color: #00f7ff;
+  color: var(--accent-color);
+  transition: color 0.3s ease;
 }
 
 /* ============================
@@ -409,6 +575,8 @@ h2 {
 ============================ */
 #skills {
   scroll-margin-top: 80px; 
+  background-color: var(--bg-primary);
+  transition: background-color 0.3s ease;
 }
 
 .skills {
@@ -426,8 +594,9 @@ h2 {
 .skills-section {
   text-align: center;
   padding: 40px 20px;
-  background-color: #0e0e0e;
-  color: white;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .skills-section h1 {
@@ -439,7 +608,8 @@ h2 {
   text-align: center;
   margin-top: 4rem;
   margin-bottom: 2rem;
-  color: white;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 .skills-grid {
   display: flex;
@@ -456,9 +626,10 @@ h2 {
 
 .skill-category h3 {
   font-size: 1.5rem;
-  color: #00f0ff;
+  color: var(--accent-color);
   margin-bottom: 1rem;
   text-align: center;
+  transition: color 0.3s ease;
 }
 
 .skill-category ul {
@@ -491,14 +662,16 @@ h2 {
 .projects h2 {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
-  color: #ffffff;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .projects p {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #ccc;
+  color: var(--text-secondary);
   padding: 0 1.5rem;
+  transition: color 0.3s ease;
 }
 
 .project-grid {
@@ -514,7 +687,14 @@ h2 {
   overflow: hidden;
   border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s, box-shadow 0.3s, border 0.3s;
+  background: var(--card-bg);
+  box-shadow: 0 0 12px var(--shadow-color);
+  border: 1px solid transparent;
+}
+[data-theme="light"] .project-card {
+  border: 1.5px solid var(--card-border);
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.07);
 }
 
 .project-card img {
@@ -549,12 +729,13 @@ h2 {
 }
 
 .project-overlay span {
-  background: #00f0ff;
+  background: var(--accent-color);
   padding: 10px 18px;
   border-radius: 6px;
   font-weight: bold;
   font-size: 1.2rem;
-  color: #000;
+  color: var(--bg-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ============================
@@ -563,15 +744,17 @@ h2 {
 .contact-section {
   padding: 60px 20px;
   text-align: center;
-  background-color: #000;
-  color: white;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .contact-section h2 {
   font-size: 2.5rem;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-bottom: 1.5rem;
   text-align: center;
+  transition: color 0.3s ease;
 }
 
 .contact-form {
@@ -590,11 +773,20 @@ h2 {
   font-size: 1em;
   width: 100%;
   font: 1em sans-serif;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
 }
 
 .contact-form button {
-  background-color: #00f0ff;
-  color: black;
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
   font-weight: bold;
   padding: 12px;
   border: none;
@@ -605,7 +797,7 @@ h2 {
 }
 
 .contact-form button:hover {
-  background-color: #aefcff;
+  background-color: var(--accent-hover);
 }
 
 /* ============================
@@ -615,9 +807,10 @@ h2 {
   text-align: center;
   padding: 1rem;
   font-size: 1.2rem;
-  color: #ccc;
-  background-color: black;
-  border-top: 1px solid #333;
+  color: var(--text-secondary);
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* ============================
@@ -637,13 +830,14 @@ h2 {
 }
 
 .popup-content {
-  background-color: rgb(0, 0, 0);
+  background-color: var(--bg-primary);
   padding: 2rem;
   border-radius: 10px;
   text-align: center;
   max-width: 300px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-  color:  #00f7ff;
+  color: var(--accent-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .popup-content p {
@@ -652,10 +846,22 @@ h2 {
 }
 
 .popup-content button {
-  background-color:  #00f7ff;
+  background-color: var(--accent-color);
   border: none;
   padding: 0.6rem 1.5rem;
   font-size: 1rem;
   border-radius: 999px;
   cursor: pointer;
+  color: var(--bg-primary);
+  transition: background-color 0.3s ease;
 }
+
+.popup-content button:hover {
+  background-color: var(--accent-hover);
+}
+
+/* Theme-based icon switching */
+.icon-dark { display: none; }
+.icon-default { display: inline; }
+[data-theme="light"] .icon-dark { display: inline; }
+[data-theme="light"] .icon-default { display: none; }
