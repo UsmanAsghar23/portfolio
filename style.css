@@ -680,6 +680,16 @@ h2 {
   gap: 20px;
   margin-top: 2rem;
   padding: 0 1rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 2-2-2-1 layout for 7 projects - center the 7th card */
+.project-grid .project-card:nth-child(7) {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: calc(50% - 10px);
 }
 
 .project-card {
